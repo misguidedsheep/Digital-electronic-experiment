@@ -1,0 +1,10 @@
+vendor_name = ModelSim
+source_file = 1, D:/digitallogtic2183612050/lab31/selection2to1.v
+source_file = 1, D:/digitallogtic2183612050/lab31/db/lab31.cbx.xml
+design_name = selection2to1
+instance = comp, \a~I\, a, selection2to1, 1
+instance = comp, \b~I\, b, selection2to1, 1
+instance = comp, \en~I\, en, selection2to1, 1
+instance = comp, \sel~I\, sel, selection2to1, 1
+instance = comp, \y~0\, y~0, selection2to1, 1
+instance = comp, \y~I\, y, selection2to1, 1

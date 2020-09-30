@@ -1,0 +1,322 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Full Version"
+
+// DATE "03/09/2020 08:58:15"
+
+// 
+// Device: Altera 5M160ZE64C5 Package EQFP64
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module count (
+	En,
+	Clock,
+	Reset,
+	Out);
+input 	En;
+input 	Clock;
+input 	Reset;
+output 	[3:0] Out;
+
+// Design Ports Information
+// Out[0]	=>  Location: PIN_12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Out[1]	=>  Location: PIN_10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Out[2]	=>  Location: PIN_3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// Out[3]	=>  Location: PIN_11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// En	=>  Location: PIN_13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Clock	=>  Location: PIN_9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// Reset	=>  Location: PIN_7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \Clock~combout ;
+wire \En~combout ;
+wire \Reset~combout ;
+wire \Out[0]~reg0_regout ;
+wire \Out[1]~reg0_regout ;
+wire \Out[2]~reg0_regout ;
+wire \Out[1]~3_combout ;
+wire \Out[3]~reg0_regout ;
+
+
+// Location: PIN_9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \Clock~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\Clock~combout ),
+	.padio(Clock));
+// synopsys translate_off
+defparam \Clock~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: PIN_13,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \En~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\En~combout ),
+	.padio(En));
+// synopsys translate_off
+defparam \En~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: PIN_7,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \Reset~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\Reset~combout ),
+	.padio(Reset));
+// synopsys translate_off
+defparam \Reset~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: LC_X2_Y2_N8
+maxv_lcell \Out[0]~reg0 (
+// Equation(s):
+// \Out[0]~reg0_regout  = DFFEAS(\En~combout  $ ((((\Out[0]~reg0_regout )))), GLOBAL(\Clock~combout ), GLOBAL(\Reset~combout ), , , , , , )
+
+	.clk(\Clock~combout ),
+	.dataa(\En~combout ),
+	.datab(vcc),
+	.datac(vcc),
+	.datad(\Out[0]~reg0_regout ),
+	.aclr(!\Reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Out[0]~reg0_regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Out[0]~reg0 .lut_mask = "55aa";
+defparam \Out[0]~reg0 .operation_mode = "normal";
+defparam \Out[0]~reg0 .output_mode = "reg_only";
+defparam \Out[0]~reg0 .register_cascade_mode = "off";
+defparam \Out[0]~reg0 .sum_lutc_input = "datac";
+defparam \Out[0]~reg0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X2_Y2_N7
+maxv_lcell \Out[1]~reg0 (
+// Equation(s):
+// \Out[1]~reg0_regout  = DFFEAS((\Out[1]~reg0_regout  $ (((\En~combout  & \Out[0]~reg0_regout )))), GLOBAL(\Clock~combout ), GLOBAL(\Reset~combout ), , , , , , )
+
+	.clk(\Clock~combout ),
+	.dataa(\En~combout ),
+	.datab(vcc),
+	.datac(\Out[1]~reg0_regout ),
+	.datad(\Out[0]~reg0_regout ),
+	.aclr(!\Reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Out[1]~reg0_regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Out[1]~reg0 .lut_mask = "5af0";
+defparam \Out[1]~reg0 .operation_mode = "normal";
+defparam \Out[1]~reg0 .output_mode = "reg_only";
+defparam \Out[1]~reg0 .register_cascade_mode = "off";
+defparam \Out[1]~reg0 .sum_lutc_input = "datac";
+defparam \Out[1]~reg0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X2_Y2_N9
+maxv_lcell \Out[2]~reg0 (
+// Equation(s):
+// \Out[2]~reg0_regout  = DFFEAS(\Out[2]~reg0_regout  $ (((\En~combout  & (\Out[1]~reg0_regout  & \Out[0]~reg0_regout )))), GLOBAL(\Clock~combout ), GLOBAL(\Reset~combout ), , , , , , )
+
+	.clk(\Clock~combout ),
+	.dataa(\En~combout ),
+	.datab(\Out[1]~reg0_regout ),
+	.datac(\Out[0]~reg0_regout ),
+	.datad(\Out[2]~reg0_regout ),
+	.aclr(!\Reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Out[2]~reg0_regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Out[2]~reg0 .lut_mask = "7f80";
+defparam \Out[2]~reg0 .operation_mode = "normal";
+defparam \Out[2]~reg0 .output_mode = "reg_only";
+defparam \Out[2]~reg0 .register_cascade_mode = "off";
+defparam \Out[2]~reg0 .sum_lutc_input = "datac";
+defparam \Out[2]~reg0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X2_Y2_N3
+maxv_lcell \Out[1]~3 (
+// Equation(s):
+// \Out[1]~3_combout  = (((\En~combout  & \Out[0]~reg0_regout )))
+
+	.clk(gnd),
+	.dataa(vcc),
+	.datab(vcc),
+	.datac(\En~combout ),
+	.datad(\Out[0]~reg0_regout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\Out[1]~3_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Out[1]~3 .lut_mask = "f000";
+defparam \Out[1]~3 .operation_mode = "normal";
+defparam \Out[1]~3 .output_mode = "comb_only";
+defparam \Out[1]~3 .register_cascade_mode = "off";
+defparam \Out[1]~3 .sum_lutc_input = "datac";
+defparam \Out[1]~3 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: LC_X2_Y2_N4
+maxv_lcell \Out[3]~reg0 (
+// Equation(s):
+// \Out[3]~reg0_regout  = DFFEAS(\Out[3]~reg0_regout  $ (((\Out[2]~reg0_regout  & (\Out[1]~reg0_regout  & \Out[1]~3_combout )))), GLOBAL(\Clock~combout ), GLOBAL(\Reset~combout ), , , , , , )
+
+	.clk(\Clock~combout ),
+	.dataa(\Out[3]~reg0_regout ),
+	.datab(\Out[2]~reg0_regout ),
+	.datac(\Out[1]~reg0_regout ),
+	.datad(\Out[1]~3_combout ),
+	.aclr(!\Reset~combout ),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(),
+	.regout(\Out[3]~reg0_regout ),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \Out[3]~reg0 .lut_mask = "6aaa";
+defparam \Out[3]~reg0 .operation_mode = "normal";
+defparam \Out[3]~reg0 .output_mode = "reg_only";
+defparam \Out[3]~reg0 .register_cascade_mode = "off";
+defparam \Out[3]~reg0 .sum_lutc_input = "datac";
+defparam \Out[3]~reg0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: PIN_12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+maxv_io \Out[0]~I (
+	.datain(\Out[0]~reg0_regout ),
+	.oe(vcc),
+	.combout(),
+	.padio(Out[0]));
+// synopsys translate_off
+defparam \Out[0]~I .operation_mode = "output";
+// synopsys translate_on
+
+// Location: PIN_10,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+maxv_io \Out[1]~I (
+	.datain(\Out[1]~reg0_regout ),
+	.oe(vcc),
+	.combout(),
+	.padio(Out[1]));
+// synopsys translate_off
+defparam \Out[1]~I .operation_mode = "output";
+// synopsys translate_on
+
+// Location: PIN_3,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+maxv_io \Out[2]~I (
+	.datain(\Out[2]~reg0_regout ),
+	.oe(vcc),
+	.combout(),
+	.padio(Out[2]));
+// synopsys translate_off
+defparam \Out[2]~I .operation_mode = "output";
+// synopsys translate_on
+
+// Location: PIN_11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+maxv_io \Out[3]~I (
+	.datain(\Out[3]~reg0_regout ),
+	.oe(vcc),
+	.combout(),
+	.padio(Out[3]));
+// synopsys translate_off
+defparam \Out[3]~I .operation_mode = "output";
+// synopsys translate_on
+
+endmodule

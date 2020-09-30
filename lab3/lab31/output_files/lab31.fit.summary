@@ -1,0 +1,11 @@
+Fitter Status : Successful - Sun Mar 08 21:17:59 2020
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Full Version
+Revision Name : lab31
+Top-level Entity Name : selection2to1
+Family : MAX V
+Device : 5M160ZE64C5
+Timing Models : Final
+Total logic elements : 1 / 160 ( < 1 % )
+Total pins : 5 / 54 ( 9 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

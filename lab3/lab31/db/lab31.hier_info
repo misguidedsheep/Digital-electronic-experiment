@@ -1,0 +1,8 @@
+|selection2to1
+a => y.DATAB
+b => y.DATAA
+sel => y.OUTPUTSELECT
+en => y.OUTPUTSELECT
+y << y.DB_MAX_OUTPUT_PORT_TYPE
+
+

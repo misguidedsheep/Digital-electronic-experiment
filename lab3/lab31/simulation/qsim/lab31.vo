@@ -1,0 +1,155 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Full Version"
+
+// DATE "03/09/2020 08:27:55"
+
+// 
+// Device: Altera 5M160ZE64C5 Package EQFP64
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module selection2to1 (
+	a,
+	b,
+	sel,
+	en,
+	y);
+input 	a;
+input 	b;
+input 	sel;
+input 	en;
+output 	y;
+
+// Design Ports Information
+// y	=>  Location: PIN_9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+// en	=>  Location: PIN_11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// a	=>  Location: PIN_5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// b	=>  Location: PIN_12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+// sel	=>  Location: PIN_32,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \a~combout ;
+wire \b~combout ;
+wire \en~combout ;
+wire \sel~combout ;
+wire \y~0_combout ;
+
+
+// Location: PIN_5,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \a~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\a~combout ),
+	.padio(a));
+// synopsys translate_off
+defparam \a~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: PIN_12,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \b~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\b~combout ),
+	.padio(b));
+// synopsys translate_off
+defparam \b~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: PIN_11,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \en~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\en~combout ),
+	.padio(en));
+// synopsys translate_off
+defparam \en~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: PIN_32,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: Default
+maxv_io \sel~I (
+	.datain(gnd),
+	.oe(gnd),
+	.combout(\sel~combout ),
+	.padio(sel));
+// synopsys translate_off
+defparam \sel~I .operation_mode = "input";
+// synopsys translate_on
+
+// Location: LC_X2_Y2_N2
+maxv_lcell \y~0 (
+// Equation(s):
+// \y~0_combout  = (\en~combout  & ((\sel~combout  & (\a~combout )) # (!\sel~combout  & ((\b~combout )))))
+
+	.clk(gnd),
+	.dataa(\a~combout ),
+	.datab(\b~combout ),
+	.datac(\en~combout ),
+	.datad(\sel~combout ),
+	.aclr(gnd),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.cin(gnd),
+	.cin0(gnd),
+	.cin1(vcc),
+	.inverta(gnd),
+	.regcascin(gnd),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.combout(\y~0_combout ),
+	.regout(),
+	.cout(),
+	.cout0(),
+	.cout1());
+// synopsys translate_off
+defparam \y~0 .lut_mask = "a0c0";
+defparam \y~0 .operation_mode = "normal";
+defparam \y~0 .output_mode = "comb_only";
+defparam \y~0 .register_cascade_mode = "off";
+defparam \y~0 .sum_lutc_input = "datac";
+defparam \y~0 .synch_mode = "off";
+// synopsys translate_on
+
+// Location: PIN_9,	 I/O Standard: 3.3-V LVTTL,	 Current Strength: 16mA
+maxv_io \y~I (
+	.datain(\y~0_combout ),
+	.oe(vcc),
+	.combout(),
+	.padio(y));
+// synopsys translate_off
+defparam \y~I .operation_mode = "output";
+// synopsys translate_on
+
+endmodule
